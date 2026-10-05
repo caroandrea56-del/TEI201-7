@@ -1,9 +1,9 @@
 ### Información del Equipo
 - **Integrantes:**
-  - Nombre 1 - Rol 1
-  - Nombre 2 - Rol 2
-  - Nombre 3 - Rol 3
-  - Nombre 4 - Rol 4
+  - Greta Ferrer - Rol 1
+  - Carolina Gallardo - Rol 2
+  - Martina Penschke- Rol 3
+  - Estela Perez - Rol 4
   
 - **ODS Seleccionado:** [Número y nombre]
 - **Problema a resolver:** [Descripción breve]
