@@ -2,55 +2,55 @@
 
 ## Contenido
 
-Esta carpeta contiene la documentación final del proyecto para la entrega del Avance #3.
+Esta carpeta reúne los documentos y presentaciones desarrollados durante las distintas etapas del proyecto del pastillero inteligente.
+
+Su objetivo es mantener un registro de los avances realizados, incluyendo la identificación del problema, la propuesta de solución, el desarrollo del prototipo y las modificaciones implementadas.
 
 ---
 
-##  Carpetas
+## Carpetas
 
-#### `reporte_final/`
-Reporte completo del proyecto (máximo 15 páginas)
+### `presentacion/`
 
-#### `presentacion/`
-Slides de la presentación final
+Contiene las presentaciones utilizadas para exponer los avances del proyecto.
+
+- [Presentación 1](presentacion/Presentaci%C3%B3n%201.pptx): presentación correspondiente a la primera etapa del proyecto.
+- [Presentación 2](presentacion/Presentaci%C3%B3n%202.pptx): presentación utilizada para el segundo avance, enfocada en el desarrollo del prototipo.
+
+### `reporte_final/`
+
+Contiene el informe escrito correspondiente a la primera entrega del proyecto.
+
+- [Informe Entrega 1](reporte_final/Informe%20entrega%201%20tei.pdf): documento desarrollado durante la etapa inicial del proyecto.
 
 ---
 
 ## Documentos Principales
 
-### 1. Reporte Final del Proyecto
-`reporte_final_v3.pdf`
+### 1. Primera Entrega
 
-Máximo 15 páginas, formato profesional
+Durante esta etapa se desarrolló la documentación inicial del proyecto, junto con su primera presentación.
 
-### 2. Presentación Final
-`presentacion_avance3.pdf` o `.pptx`
+Los archivos correspondientes se encuentran disponibles en las carpetas `presentacion/` y `reporte_final/`.
 
-Duración: 10 minutos de presentación
+### 2. Segunda Entrega — Prototipo Alpha IoT
+
+La segunda entrega se centra en el desarrollo del prototipo y en la demostración de su funcionamiento.
+
+Para esta etapa, la documentación del proyecto se realiza mediante el repositorio de GitHub, donde se registran los avances y las evidencias del trabajo desarrollado.
+
+La presentación utilizada para esta entrega se encuentra en `presentacion/`.
 
 ---
 
-## Checklist de Entrega
+## Documentación Técnica del Repositorio
 
-### Documentos Obligatorios
-- [ ] Reporte final PDF (máx. 15 páginas)
-- [ ] Presentación PDF/PPTX
-- [ ] Manual de usuario (puede estar integrado en reporte)
+Además de los documentos de esta carpeta, el repositorio cuenta con información organizada en:
 
-### Contenido del Reporte
-- [ ] Contexto y problemática ODS
-- [ ] Solución propuesta (descripción técnica)
-- [ ] Proceso de diseño e iteraciones
-- [ ] Documentación técnica (resumen)
-- [ ] Resultados de testing y validación
-- [ ] Análisis de impacto ODS
-- [ ] Conclusiones y trabajo futuro
-- [ ] Referencias bibliográficas
+- `hardware/`: componentes electrónicos, conexiones y esquemas.
+- `software/`: código Arduino y documentación técnica.
+- `diseno_3d/`: modelos tridimensionales y archivos STL.
+- `iteraciones/`: cambios y evolución del prototipo.
+- `testing/`: pruebas de funcionamiento, errores y soluciones.
 
-### Contenido de Presentación
-- [ ] Problema y contexto ODS (2 min)
-- [ ] Solución técnica (3 min)
-- [ ] Iteraciones y refinamiento (2 min)
-- [ ] Validación con usuarios (2 min)
-- [ ] Demo en vivo (3 min)
-- [ ] Conclusiones (1 min)
+Esta organización permite revisar el proceso de desarrollo del proyecto y consultar los archivos correspondientes a cada etapa.
