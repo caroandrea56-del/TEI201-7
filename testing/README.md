@@ -1,93 +1,89 @@
 # Testing y Validación
 
 ## Objetivo
-Validar el funcionamiento del prototipo con usuarios reales y medir el impacto cuantitativo en la problemática ODS seleccionada.
+
+Evaluar el funcionamiento de los componentes electrónicos del pastillero inteligente y registrar los problemas identificados durante el desarrollo del prototipo.
+
+Las pruebas se enfocan en la detección de interacción mediante el sensor y el funcionamiento de las alertas visuales y sonoras.
 
 ---
 
-## 📁 Carpetas
+## Carpetas
 
-#### `reportes/`
-Documentos con resultados del testing
+### `evidencias/`
 
-#### `evidencias/`
-Fotos y videos de sesiones con usuarios
+Fotografías y registros del funcionamiento del sensor, LED, buzzer y prototipo.
 
-#### `datos/`
-Datos cuantitativos recolectados
+### `reportes/`
+
+Descripción de las pruebas realizadas, problemas encontrados y soluciones implementadas.
+
+### `datos/`
+
+Registros de funcionamiento y mediciones obtenidas durante las pruebas.
 
 ---
 
 ## Metodología de Testing
 
-### Grupo Objetivo
-- **Perfil de usuarios:** [Descripción]
-- **Cantidad mínima:** 5 usuarios
-- **Ubicación:** [Contexto real de uso]
+El sistema se ha desarrollado mediante pruebas incrementales de sus componentes.
 
-### Protocolo de Testing
-1. **Briefing** (5 min)
-   - Explicar propósito del prototipo
-   - Contexto de uso
+### Prueba del Sensor
 
-2. **Sesión de Uso** (15-20 min)
-   - Usuario interactúa con prototipo
-   - Observación sin intervención
-   - Toma de notas
+Se utiliza un sensor o microinterruptor conectado al pin D2 / GPIO4 de la ESP8266.
 
-3. **Entrevista Post-Testing** (10 min)
-   - Preguntas sobre experiencia
-   - Feedback cualitativo
-   - Sugerencias de mejora
+El programa lee su estado mediante `digitalRead()` e identifica una nueva interacción comparando el estado actual con el anterior.
 
-4. **Encuesta Cuantitativa** (5 min)
-   - Escala Likert (1-5)
-   - Métricas específicas
+### Prueba del LED
 
----
+El LED se encuentra conectado al pin D5 / GPIO14.
 
-## Métricas de Evaluación
+El código permite encenderlo cuando se activa la alarma y apagarlo cuando se detecta una nueva interacción.
 
-### Usabilidad
-- Facilidad de uso (1-5)
-- Claridad de funcionamiento (1-5)
-- Satisfacción general (1-5)
+### Prueba del Buzzer
 
-### Impacto ODS
-- [Métrica específica 1 relacionada con ODS]
-- [Métrica específica 2 relacionada con ODS]
-- [Métrica específica 3 relacionada con ODS]
+El buzzer pasivo está conectado al pin D6 / GPIO12.
 
-### Desempeño Técnico
-- Tiempo de respuesta del sistema
-- Tasa de errores
-- Confiabilidad
+Durante el desarrollo se identificó que no era suficiente utilizar `digitalWrite()` para generar el sonido, por lo que se implementó la función `tone()`.
+
+### Prueba de Integración
+
+La lógica programada permite relacionar el sensor con las alertas:
+
+1. Se detecta una interacción.
+2. Se activa el LED y el buzzer.
+3. Se detecta una segunda interacción.
+4. Se desactivan ambas alertas.
+
+La estabilidad del sistema durante cinco minutos continuos debe comprobarse mediante una prueba física.
 
 ---
 
-## Análisis de Resultados
+## Errores Encontrados y Soluciones
 
-### Cuantitativo
-- Promedios y desviaciones estándar
-- Gráficos de resultados
-- Comparación con baseline
+| Problema | Causa identificada o posible | Solución |
+|---|---|---|
+| Buzzer sin sonido | Se estaba utilizando un buzzer pasivo sin generar una frecuencia | Implementación de `tone()` |
+| Sensor sin respuesta | Posible error de conexión o configuración | Revisar GPIO4 y `INPUT_PULLUP` |
+| LED sin encender | Posible error de polaridad o conexión | Verificar polaridad, resistencia y GPIO14 |
+| Alarma que no se desactiva | Posible error en la detección de una segunda interacción | Revisar la comparación de estados del sensor |
 
-### Cualitativo
-- Temas recurrentes en feedback
-- Problemas identificados
-- Sugerencias de mejora
+El problema del buzzer está documentado como una dificultad encontrada durante el desarrollo. Los demás corresponden a posibles fallas y procedimientos de revisión.
 
 ---
 
-## Validación de Impacto ODS
+## Validación del Prototipo
 
-**ODS Seleccionado:** [Número y nombre]
+El sistema permite desarrollar una solución orientada al recordatorio de medicamentos mediante alertas visuales y sonoras.
 
-**Meta específica del proyecto:** [Describir]
+La conectividad inalámbrica con Pill Up y la confirmación de toma de medicamentos requieren desarrollo y validación adicionales.
 
-**Indicadores de impacto:**
-1. [Indicador 1] - Baseline: [X], Meta: [Y], Alcanzado: [Z]
-2. [Indicador 2] - Baseline: [X], Meta: [Y], Alcanzado: [Z]
+---
 
-**Proyección de impacto a escala:**
-[Si el prototipo se despliega en toda la ciudad/comunidad, cuál sería el impacto estimado]
+## Próximas Pruebas
+
+- Verificar el funcionamiento continuo del sistema durante cinco minutos.
+- Registrar evidencias fotográficas y videos de las alertas.
+- Evaluar la integración electrónica dentro del encapsulado.
+- Probar la comunicación futura con Pill Up.
+- Realizar pruebas de usabilidad con usuarios.
