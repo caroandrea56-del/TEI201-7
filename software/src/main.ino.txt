@@ -1,0 +1,53 @@
+const int pinSensor = 4;     // D2 = GPIO4
+const int pinLed = 14;       // D5 = GPIO14
+const int pinBuzzer = 12;    // D6 = GPIO12
+
+bool alarmaActiva = false;
+bool estadoAnteriorSensor = HIGH;
+
+void setup() {
+  pinMode(pinSensor, INPUT_PULLUP);
+  pinMode(pinLed, OUTPUT);
+
+  digitalWrite(pinLed, LOW);
+
+  Serial.begin(115200);
+
+  Serial.println("PASTILLERO LISTO");
+}
+
+void loop() {
+
+  bool estadoSensor = digitalRead(pinSensor);
+
+  // Detecta el momento en que se activa el sensor
+  if (estadoAnteriorSensor == HIGH && estadoSensor == LOW) {
+
+    // Cambia el estado de la alarma
+    alarmaActiva = !alarmaActiva;
+
+    if (alarmaActiva) {
+
+      digitalWrite(pinLed, HIGH);
+
+      // Buzzer pasivo
+      tone(pinBuzzer, 1000);
+
+      Serial.println("ALARMA ACTIVADA");
+
+    } else {
+
+      digitalWrite(pinLed, LOW);
+
+      noTone(pinBuzzer);
+
+      Serial.println("ALARMA APAGADA");
+    }
+
+    delay(250);
+  }
+
+  estadoAnteriorSensor = estadoSensor;
+}
+
+
