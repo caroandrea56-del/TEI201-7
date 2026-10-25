@@ -10,10 +10,10 @@ El proyecto busca disminuir olvidos, confusiones de horario y dificultades en el
 
 | Integrante | Rol | GitHub |
 |---|---|---|
-| Greta Ferrer | Diseño 3D e integración | @usuario |
+| Greta Ferrer | Diseño 3D e integración | [@GretaFerrer](https://github.com/GretaFerrer) |
 | Carolina Gallardo | Hardware | [@caroandrea56-del](https://github.com/caroandrea56-del) |
-| Martina Penschke | Software / Firmware | @usuario |
-| Estela Pérez | Testing e iteración | @usuario |
+| Martina Penschke | Software / Firmware | [@martinapenschke0317-a11y](https://github.com/martinapenschke0317-a11y) |
+| Estela Pérez | Testing e iteración | [@estelitaperezUAI](https://github.com/estelitaperezUAI) |
 
 ---
 
