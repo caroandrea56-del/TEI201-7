@@ -2,46 +2,43 @@
 
 ## Librerías Estándar (Arduino IDE)
 
-Instalar desde el Library Manager de Arduino IDE:
+El programa del pastillero inteligente utiliza funciones incluidas en el entorno Arduino.
 
-1. **[Nombre Librería 1]** - v[X.X.X]
-   - Propósito: [Descripción]
-   - Instalación: `Sketch > Include Library > Manage Libraries > Buscar "[nombre]"`
+Actualmente no requiere instalar librerías externas adicionales mediante el administrador de librerías de Arduino IDE.
 
-2. **[Nombre Librería 2]** - v[X.X.X]
-   - Propósito: [Descripción]
-   - Instalación: [Instrucciones]
+Las principales funciones utilizadas son:
+
+- `pinMode()`: Configuración de pines.
+- `digitalRead()`: Lectura del sensor.
+- `digitalWrite()`: Control del LED.
+- `tone()` y `noTone()`: Control del buzzer pasivo.
+- `Serial.begin()` y `Serial.println()`: Comunicación mediante Monitor Serial.
+
+Para compilar el programa se necesita tener instalado el soporte de placas ESP8266 en Arduino IDE.
 
 ---
 
 ## Librerías Personalizadas/Modificadas
 
-Si hay librerías modificadas o no disponibles en Arduino IDE, incluir en esta carpeta:
+El código actual no utiliza librerías personalizadas ni modificadas.
 
-### Estructura
-```
-librerias/
-├── MiLibreria/
-│   ├── MiLibreria.h
-│   ├── MiLibreria.cpp
-│   ├── keywords.txt
-│   └── README.md
-```
-
-### Instalación Manual
-```bash
-# Copiar carpeta a Arduino libraries
-cp -r MiLibreria ~/Documents/Arduino/libraries/
-```
+La programación del sensor y de las alertas se encuentra directamente en el archivo principal.
 
 ---
 
 ## Dependencias Completas
 
-Listar TODAS las librerías necesarias con versiones exactas:
+| Dependencia | Uso | Estado |
+|---|---|---|
+| Arduino IDE | Desarrollo y carga del programa | Utilizado |
+| Soporte de placas ESP8266 | Compilación para ESP8266 NodeMCU | Necesario |
+| Funciones nativas Arduino | Lectura del sensor y control de actuadores | Utilizadas |
+| Librerías externas adicionales | Funcionalidades complementarias | No requeridas actualmente |
 
-| Librería | Versión | Fuente | Obligatoria |
-|----------|---------|--------|-------------|
-| WiFi | Built-in | ESP32 Core | ✅ |
-| [Lib 1] | x.x.x | Arduino Library Manager | ✅ |
-| [Lib 2] | x.x.x | GitHub | ❌ |
+La versión exacta del soporte de ESP8266 deberá registrarse si se necesita reproducir el entorno de compilación.
+
+---
+
+## Futuras Dependencias
+
+La incorporación de conectividad WiFi y comunicación con Pill Up podría requerir nuevas dependencias, las cuales se documentarán cuando se implementen.

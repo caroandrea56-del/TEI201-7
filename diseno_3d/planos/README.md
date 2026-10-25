@@ -1,86 +1,80 @@
-# Planos Técnicos
+# Planos Técnicos — Pastillero Inteligente
 
-## Planos Requeridos
+## Planos del Prototipo
 
-### 1. Plano de Conjunto
-`plano_conjunto_v3.pdf`
+Esta carpeta contiene los archivos tridimensionales correspondientes a las piezas del pastillero inteligente. El diseño fue desarrollado considerando la distribución de los medicamentos, la portabilidad y la facilidad de apertura de los compartimientos.
 
-Incluir:
-- Vistas principales (frontal, lateral, superior)
-- Escala apropiada
-- Cotas principales externas
-- Tabla de piezas
+### 1. Modelo General
 
-### 2. Planos de Detalle
-Para cada componente crítico del encapsulado:
-- Cotas completas
-- Tolerancias importantes
-- Notas de fabricación
+El prototipo presenta una estructura rectangular de aproximadamente 100 × 80 × 30 mm, con ocho compartimientos independientes distribuidos en dos filas de cuatro.
 
----
+El diseño incorpora tapas individuales y un sistema de bisagras ubicado sobre una línea central, permitiendo acceder a los compartimientos.
 
-## Estándares de Planos
+### 2. Modelos de las Piezas
 
-### Vistas Ortogonales Requeridas
-- Vista Frontal
-- Vista Superior
-- Vista Lateral Derecha
-- Vista Isométrica (referencia)
+Los archivos STL disponibles son:
 
-### Cortes
-- Corte A-A: Sección transversal mostrando interior
-- Corte B-B: (si es necesario para claridad)
+| Archivo | Descripción |
+|---|---|
+| [CUERPO PASTILLERO.stl](CUERPO%20PASTILLERO.stl) | Estructura principal que contiene los compartimientos |
+| [EJE DE VISAGRA.stl](EJE%20DE%20VISAGRA.stl) | Eje del mecanismo de bisagras |
+| [TAPA 1.stl](TAPA%201.stl) | Primer modelo de tapa |
+| [TAPA2.stl](TAPA2.stl) | Segundo modelo de tapa |
+
+Estos archivos permiten visualizar la geometría de las piezas y utilizarlas para su fabricación mediante impresión 3D.
 
 ---
 
-## Formato de Planos
+## Características del Diseño
 
-**Tamaño de hoja:** A4 o A3  
-**Orientación:** Según convenga  
-**Escala:** 1:1, 1:2, o según sea necesario  
-**Unidades:** Milímetros (mm)
+### Distribución de Compartimientos
 
-### Información en Cajetín
-- Título del proyecto
-- Nombre de la pieza/ensamble
-- Escala
-- Material
-- Fecha
-- Versión
-- Integrantes del equipo
+- Ocho compartimientos independientes.
+- Distribución de cuatro compartimientos por fila.
+- Tapas individuales.
+- Mecanismo de bisagras central.
 
----
+### Dimensiones Generales
 
-## Acotación
+- Ancho aproximado: 100 mm.
+- Fondo aproximado: 80 mm.
+- Alto aproximado: 30 mm.
 
-### Reglas Generales
-- Cotas en milímetros sin unidad
-- Líneas de cota finas
-- Texto legible (mín. 2.5mm de altura)
-- Cotas críticas resaltadas
-
-### Tolerancias
-Indicar tolerancias para:
-- Orificios de tornillos: ±0.1mm
-- Encajes: +0.2mm / +0.0mm
-- Dimensiones generales: ±0.5mm
+Las dimensiones corresponden al diseño general del prototipo. Las medidas de detalle de cada pieza pueden revisarse en los modelos tridimensionales.
 
 ---
 
-## Exportación desde Fusion 360
+## Fabricación del Prototipo
 
-```
-Opción 1: Drawing (Plano tradicional)
-1. Create Drawing
-2. Configurar vistas y cotas
-3. Export como PDF
+El diseño se preparó para la fabricación mediante impresión 3D.
 
-Opción 2: Export directo
-File > Export > Formato PDF/DWG
-```
+Durante el desarrollo se realizaron modificaciones en la geometría de las piezas, particularmente en las tapas y el sistema de bisagras, buscando facilitar su fabricación y funcionamiento.
+
+Los archivos disponibles se encuentran en formato STL.
 
 ---
 
-## Archivos a Entregar
+## Modificaciones Realizadas
 
-- `plano_conjunto_v3.pdf` - Plano principal
+El diseño inicial tenía una forma circular y un mecanismo de apertura más complejo.
+
+A partir de las primeras pruebas se realizaron los siguientes cambios:
+
+1. Modificación de la estructura circular a rectangular.
+2. Reducción del tamaño general.
+3. Incorporación de ocho compartimientos.
+4. Modificación de la ubicación de las bisagras.
+5. Corrección de los ejes de giro.
+6. Separación de las piezas para facilitar su impresión.
+
+Estas mejoras permitieron simplificar el diseño y avanzar hacia un prototipo más compacto.
+
+---
+
+## Documentación Complementaria
+
+Los archivos STL permiten revisar las piezas tridimensionales del encapsulado.
+
+Los planos técnicos acotados, tolerancias específicas y configuraciones definitivas de impresión no se encuentran documentados en esta carpeta.
+
+La evolución del diseño puede consultarse en la carpeta [`../../iteraciones/`](../../iteraciones/).

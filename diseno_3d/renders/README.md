@@ -1,54 +1,56 @@
-# Renders de Alta Calidad
+# Renders del Pastillero Inteligente
 
-## Renders Requeridos (Mínimo 4 ángulos)
+## Visualización del Modelo 3D
 
-### 1. Vista Isométrica Frontal
-`01_isometrica_frontal.png`
-- Muestra exterior completo
-- Iluminación clara
-- Resolución: 1920×1080 mínimo
+Esta carpeta está destinada a reunir las imágenes del diseño tridimensional del pastillero.
 
-### Renders Opcionales (Recomendados)
-- `02_detalle_sensores.png` - Close-up de sensores
-- `03_ensamble_explosionado.png` - Componentes separados
-- `04_variantes_color.png` - Si hay opciones de diseño
+El modelo contempla una estructura rectangular con ocho compartimientos independientes y un mecanismo de tapas y bisagras central.
+
+### 1. Vista Isométrica
+
+Permite observar la forma general del pastillero, la distribución de los compartimientos y la ubicación de las tapas.
+
+### 2. Vista Superior
+
+Permite visualizar la organización de los ocho compartimientos en dos filas de cuatro.
+
+### 3. Detalle del Sistema de Bisagras
+
+Permite observar el mecanismo de apertura de las tapas y la ubicación del eje central.
+
+### 4. Vista del Ensamble
+
+Permite representar la distribución de las piezas que componen el encapsulado y su relación dentro del modelo.
 
 ---
 
-## Configuración de Render en Fusion 360
+## Configuración de Render
 
-### Settings Recomendados
-- **Render Engine:** Local / Cloud
-- **Environment:** [Tipo de iluminación]
-- **Resolution:** 1920×1080 o superior
-- **Quality:** High
-- **Exposure:** [Ajustado para visibilidad]
-- **Effects:** Ambient Occlusion ON
+Las imágenes podrán obtenerse mediante el software utilizado para el modelado tridimensional.
 
-### Materiales y Apariencias
-Asignar materiales realistas:
-- Plástico: PLA/ABS mate o satinado
-- Electrónica: PCB verde, componentes negros
-- Metales: Tornillos acero inoxidable
+Las configuraciones de iluminación, resolución y materiales dependerán del programa y del tipo de visualización utilizada.
+
+---
+
+## Materiales y Apariencias
+
+El diseño está orientado a fabricación mediante impresión 3D. La representación visual debe permitir distinguir el cuerpo principal, las tapas y las bisagras.
 
 ---
 
 ## Nomenclatura de Archivos
-```
-[numero]_[descripcion]_[version].png
 
-Ejemplo:
-01_isometrica_frontal_v3.png
-```
+Se recomienda utilizar nombres descriptivos, por ejemplo:
+
+- `vista_isometrica.png`
+- `vista_superior.png`
+- `detalle_bisagras.png`
+- `vista_ensamble.png`
 
 ---
 
-## Checklist de Calidad
+## Documentación del Modelo
 
-- [ ] Resolución mínima 1920×1080
-- [ ] Formato PNG (con transparencia si aplica)
-- [ ] Iluminación sin sombras excesivas
-- [ ] Componentes internos visibles en corte
-- [ ] Fondo neutro o contextual apropiado
-- [ ] Sin aliasing o bordes pixelados
-- [ ] Todos los componentes críticos visibles
+Los archivos STL del prototipo están disponibles en la carpeta [`../planos/`](../planos/).
+
+Las imágenes renderizadas se incorporarán a esta carpeta cuando estén disponibles.

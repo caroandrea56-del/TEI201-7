@@ -113,7 +113,22 @@ Alerta visual y sonora
 4. El buzzer comienza a emitir sonido.
 5. Una nueva interacción con el sensor apaga el LED y el buzzer.
 6. El sistema queda disponible para una nueva activación.
+---
+## Aplicación móvil — Pill Up
 
+Como complemento del sistema electrónico, se está desarrollando **Pill Up**, una aplicación móvil mediante Flutter orientada a la organización y seguimiento de los medicamentos.
+
+La aplicación contempla un calendario, la visualización de medicamentos programados, sus respectivas dosis y horarios, y el seguimiento de su estado.
+
+El código fuente de la aplicación se encuentra en un repositorio independiente:
+
+[Ver repositorio de Pill Up](https://github.com/TICS316/proyecto-caroligallardo)
+
+### Integración con el dispositivo
+
+**Estado:** Pendiente de implementar y validar.
+
+Se contempla conectar la aplicación móvil con el pastillero físico para complementar las alertas y el seguimiento de medicamentos. El mecanismo de comunicación y la sincronización de datos todavía deben definirse y probarse.
 ---
 
 ## Testing del Software
