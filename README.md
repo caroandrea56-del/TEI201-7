@@ -11,7 +11,7 @@ El proyecto busca disminuir olvidos, confusiones de horario y dificultades en el
 | Integrante | Rol | GitHub |
 |---|---|---|
 | Greta Ferrer | Diseño 3D e integración | @usuario |
-| Carolina Gallardo | Hardware | @usuario |
+| Carolina Gallardo | Hardware | [@caroandrea56-del](https://github.com/caroandrea56-del) |
 | Martina Penschke | Software / Firmware | @usuario |
 | Estela Pérez | Testing e iteración | @usuario |
 
@@ -46,7 +46,17 @@ El sistema funciona actualmente de la siguiente manera:
 - Buzzer → D6 / GPIO12
 - Todos los componentes comparten GND.
 
----
+## Aplicación móvil — Pill Up
+
+Como complemento del pastillero inteligente, se está desarrollando **Pill Up**, una aplicación móvil mediante Flutter que busca facilitar la organización y el seguimiento de los medicamentos.
+
+La aplicación contempla funciones relacionadas con la programación de horarios, visualización de medicamentos y seguimiento de las dosis.
+
+El desarrollo de Pill Up se encuentra en un repositorio independiente, donde se puede revisar el código fuente y los avances realizados.
+
+**[Ver repositorio de Pill Up](https://github.com/TICS316/proyecto-caroligallardo)**
+
+*La integración entre la aplicación móvil y el dispositivo físico forma parte del desarrollo del proyecto.*
 
 ## Instrucciones de uso
 
