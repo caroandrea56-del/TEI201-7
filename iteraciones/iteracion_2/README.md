@@ -1,153 +1,97 @@
-# Iteración 2 - Primera Mejora Significativa
+# Iteración 2 — Rediseño del Pastillero
 
 ## Información General
 
-**Fecha:** [XX/XX/2025]  
-**Versión:** v2.0  
-**Estado:** Prototipo funcional mejorado  
-**Avance asociado:** Avance #2
+**Versión:** Segunda propuesta del prototipo  
+**Estado:** Diseño rectangular desarrollado  
+**Avance asociado:** Desarrollo del prototipo Alpha IoT
 
 ---
 
 ## Descripción
 
-Segunda versión del prototipo, incorporando feedback de la iteración 1 y del Avance #1. Incluye mejoras significativas en funcionalidad y primeros pasos en diseño de encapsulado.
+En esta etapa se modificó la estructura circular inicial por un diseño rectangular, buscando mejorar la portabilidad, reducir la complejidad del mecanismo y facilitar la fabricación de las piezas.
 
-**Objetivos de esta iteración:**
-- Corregir problemas identificados en v1
-- Agregar funcionalidades adicionales
-- Iniciar diseño 3D del encapsulado
-- Realizar primeras pruebas con usuarios
+El nuevo diseño contempla ocho compartimientos independientes distribuidos en dos filas de cuatro, con tapas individuales y un sistema de bisagras central.
 
 ---
 
-## Cambios Respecto a v1
-
-### Hardware
-**Agregado:**
-- [Componente nuevo 1]
-- [Componente nuevo 2]
-
-**Modificado:**
-- [Cambio 1] - Razón: [Justificación]
-- [Cambio 2] - Razón: [Justificación]
-
-**Removido:**
-- [Componente removido] - Razón: [Justificación]
-
-### Software
-**Nuevas funcionalidades:**
-- [Feature 1]
-- [Feature 2]
-
-**Optimizaciones:**
-- [Optimización 1]
-- [Optimización 2]
-
-**Bugs corregidos:**
-- [Bug 1 de v1]
-- [Bug 2 de v1]
+## Cambios Respecto a la Primera Iteración
 
 ### Diseño Mecánico
-- Primer diseño de encapsulado en Fusion 360
-- Prototipo impreso en 3D
-- Integración de componentes en carcasa
+
+**Modificaciones realizadas:**
+
+- Cambio de estructura circular a rectangular.
+- Reducción del tamaño general.
+- Incorporación de ocho compartimientos.
+- Distribución de cuatro compartimientos por fila.
+- Incorporación de tapas individuales.
+- Ubicación de las bisagras sobre una línea central.
+- Corrección de los ejes de giro.
+- Separación de las piezas para facilitar la impresión 3D.
+
+### Dimensiones Generales
+
+El diseño contempla aproximadamente:
+
+- Ancho: 100 mm.
+- Fondo: 80 mm.
+- Altura: 30 mm.
+
+### Archivos de Diseño
+
+Se desarrollaron archivos STL correspondientes a las principales piezas del encapsulado:
+
+- Cuerpo del pastillero.
+- Eje de bisagra.
+- Tapa 1.
+- Tapa 2.
+
+Estos archivos se encuentran disponibles en [`../../diseno_3d/planos/`](../../diseno_3d/planos/).
 
 ---
 
-## Fotos del Prototipo v2
+## Pruebas y Modificaciones
 
-Incluir en esta carpeta:
-- `v2_prototipo_completo.jpg`
-- `v2_circuito_integrado.jpg`
-- `v2_encapsulado_inicial.jpg`
-- `v2_testing_usuario.jpg`
+Durante el proceso de diseño se realizaron ajustes en las piezas, principalmente en el mecanismo de apertura y el sistema de bisagras.
+
+Las modificaciones buscaron facilitar el movimiento de las tapas y mejorar la fabricación del prototipo.
 
 ---
 
-## Resultados de Testing
+## Comparación con el Diseño Inicial
 
-### Funcionalidad Lograda
-✅ [Función 1]  
-✅ [Función 2]  
-✅ [Función 3]  
-⚠️ [Función 4 - parcial]
-
-### Feedback del Avance #2
-
-**Comentarios del profesor/ayudante:**
-1. [Comentario 1]
-   - Acción: [Plan de mejora para v3]
-
-2. [Comentario 2]
-   - Acción: [Plan de mejora para v3]
-
-### Testing con Usuarios (2-3 personas)
-
-**Resultados cuantitativos:**
-- Facilidad de uso promedio: [X/5]
-- Satisfacción promedio: [X/5]
-
-**Feedback cualitativo:**
-- Positivo: [Comentarios]
-- A mejorar: [Comentarios]
+| Aspecto | Primera iteración | Segunda iteración |
+|---|---|---|
+| Forma | Circular | Rectangular |
+| Tamaño | Mayor al esperado | Diseño más compacto |
+| Compartimientos | Distribución inicial | Ocho compartimientos |
+| Apertura | Mecanismo complejo | Tapas individuales |
+| Bisagras | Mecanismo inicial | Sistema central rediseñado |
+| Fabricación | Dificultades iniciales | Piezas ajustadas para impresión 3D |
 
 ---
 
-## Problemas Pendientes
+## Aprendizajes
 
-1. **Problema 1:**
-   - Descripción: [Detalles]
-   - Prioridad: Alta/Media/Baja
-   - Plan para v3: [Solución propuesta]
+El rediseño permitió simplificar la estructura y avanzar hacia un modelo más adecuado para la organización de medicamentos.
 
-2. **Problema 2:**
-   - Descripción: [Detalles]
-   - Prioridad: Alta/Media/Baja
-   - Plan para v3: [Solución propuesta]
+También se identificó la importancia de ajustar correctamente los ejes de giro y las bisagras para facilitar la apertura de los compartimientos.
 
 ---
 
-## Comparación v1 vs v2
+## Próximos Pasos
 
-| Aspecto | v1 | v2 | Mejora |
-|---------|----|----|--------|
-| Sensores funcionales | 2/3 | 3/3 | ✅ |
-| Tiempo de respuesta | 500ms | 200ms | ↓60% |
-| Consumo energético | 250mA | 180mA | ↓28% |
-| Encapsulado | ❌ | Prototipo | ✅ |
-| Usuarios testeados | 0 | 2 | ✅ |
+- Avanzar en la integración de los componentes electrónicos.
+- Evaluar la distribución del circuito dentro del encapsulado.
+- Comprobar el funcionamiento del sistema de alertas.
+- Continuar con las pruebas del prototipo.
 
 ---
 
-## Plan para Iteración 3 (Versión Final)
+## Evidencias
 
-### Mejoras Críticas
+Los archivos STL del diseño se encuentran disponibles en la carpeta de Diseño 3D.
 
-**Hardware:**
-- [ ] [Mejora crítica 1]
-- [ ] [Mejora crítica 2]
-
-**Software:**
-- [ ] [Optimización 1]
-- [ ] [Feature faltante]
-
-**Diseño:**
-- [ ] Refinar encapsulado
-- [ ] Mejorar accesibilidad
-- [ ] Finalizar sistema de montaje
-
-**Testing:**
-- [ ] Testear con 5+ usuarios
-- [ ] Validar métricas ODS
-- [ ] Instalación en contexto real
-
----
-
-## Archivos en esta Carpeta
-
-- `v2_codigo.ino` - Código de esta versión
-- `v2_esquema.png` - Esquema del circuito actualizado
-- `v2_modelo3d.f3d` - Primer diseño en Fusion 360
-- `v2_fotos/` - Fotografías del prototipo
-- `v2_feedback.pdf` - Compilación de comentarios recibidos
+Las fotografías correspondientes a esta versión pueden incorporarse para mostrar las modificaciones realizadas.

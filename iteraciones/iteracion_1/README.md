@@ -1,107 +1,70 @@
-# Iteración 1 - Concepto Inicial
+# Iteración 1 — Diseño Inicial
 
 ## Información General
 
-**Fecha:** [XX/XX/2025]  
-**Versión:** v1.0  
-**Estado:** Prototipo alpha - Prueba de concepto  
-**Avance asociado:** Planificación inicial / Avance #1
+**Versión:** Primera propuesta del prototipo  
+**Estado:** Diseño inicial  
+**Avance asociado:** Primera etapa del proyecto
 
 ---
 
 ## Descripción
 
-Primera versión del prototipo, enfocada en validar la factibilidad técnica del concepto.
+La primera propuesta del pastillero inteligente consistía en una estructura circular con un mecanismo de apertura para acceder a los medicamentos.
 
-**Objetivo de esta iteración:**
-- Probar conexión de sensores básicos
-- Validar comunicación con microcontrolador
-- Demostrar concepto de actuación
-- Circuito básico en protoboard
+El objetivo de esta etapa fue desarrollar una primera aproximación al diseño físico y evaluar su factibilidad de fabricación mediante impresión 3D.
 
 ---
 
-## Componentes Utilizados
+## Componentes del Diseño
 
-### Hardware
-- Microcontrolador: [Modelo]
-- Sensores:
-  - [Sensor 1]
-  - [Sensor 2]
-- Actuadores:
-  - [Actuador 1]
-- Otros: [Lista]
+### Diseño Mecánico
 
-### Software
-- IDE: Arduino IDE
-- Librerías: [Lista]
-- Versión código: v1.0
+- Estructura inicial de forma circular.
+- Mecanismo de apertura de mayor complejidad.
+- Primeras piezas destinadas a impresión 3D.
+
+### Hardware y Software
+
+La documentación de esta iteración se centra en el diseño mecánico. No se dispone de un registro específico del código o de las conexiones electrónicas utilizadas en esta primera versión.
 
 ---
 
-## Fotos del Prototipo
+## Pruebas del Prototipo
 
-Incluir en esta carpeta:
-- `v1_circuito_protoboard.jpg`
-- `v1_vista_general.jpg`
-- `v1_detalle_conexiones.jpg`
+Durante las primeras pruebas de diseño e impresión se identificaron dificultades relacionadas con:
 
----
+- Tamaño mayor al esperado.
+- Portabilidad limitada.
+- Complejidad del mecanismo de apertura.
 
-## Resultados de Testing Inicial
-
-### Funcionalidad Lograda
-✅ [Función 1]  
-✅ [Función 2]  
-❌ [Función 3 - no funcionó]
-
-### Problemas Identificados
-
-1. **Problema 1:**
-   - Descripción: [Detalles]
-   - Causa probable: [Análisis]
-   - Solución propuesta: [Plan]
-
-2. **Problema 2:**
-   - Descripción: [Detalles]
-   - Causa probable: [Análisis]
-   - Solución propuesta: [Plan]
+Estos problemas motivaron la búsqueda de una estructura más compacta y sencilla.
 
 ---
 
 ## Aprendizajes
 
 ### Técnicos
-- [Aprendizaje 1]
-- [Aprendizaje 2]
+
+Se identificó la importancia de considerar las dimensiones y el mecanismo de apertura desde las primeras etapas del modelado 3D.
 
 ### De Diseño
-- [Aprendizaje 1]
-- [Aprendizaje 2]
+
+El diseño circular presentaba dificultades para cumplir con las características de portabilidad y facilidad de uso buscadas.
 
 ---
 
-## Plan para Iteración 2
+## Mejoras para la Siguiente Iteración
 
-### Mejoras Planificadas
+A partir de los problemas identificados se decidió:
 
-**Hardware:**
-- [ ] [Mejora 1]
-- [ ] [Mejora 2]
-
-**Software:**
-- [ ] [Mejora 1]
-- [ ] [Mejora 2]
-
-**Diseño:**
-- [ ] Iniciar diseño de encapsulado
-- [ ] Mejorar ruteo de cables
+1. Modificar la forma del pastillero.
+2. Reducir las dimensiones generales.
+3. Simplificar el mecanismo de apertura.
+4. Mejorar la distribución de los compartimientos.
 
 ---
 
-## Archivos en esta Carpeta
+## Evidencias
 
-- `v1_codigo.ino` - Código de esta versión
-- `v1_esquema.png` - Esquema del circuito
-- `v1_fotos/` - Fotografías del prototipo
-- `v1_notas.txt` - Notas adicionales del equipo
+Las fotografías o modelos correspondientes a esta etapa pueden incorporarse a esta carpeta para documentar la evolución del diseño.
