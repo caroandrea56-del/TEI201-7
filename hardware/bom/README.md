@@ -30,7 +30,7 @@ El archivo BOM debe incluir las siguientes columnas:
 
 | Cantidad | Componente | Especificación | Fabricante | Código/SKU | Proveedor | Precio Unitario | Precio Total | Datasheet |
 |---------:|------------|----------------|------------|------------|-----------|-----------------|--------------|-----------|
-| 1 | ESP8266 NodeMCU | WiFi integrado, lógica 3.3 V | Espressif / compatible | ESP8266 | Por definir | Por definir | Por definir | Por agregar |
+| 1 | ESP32 | WiFi integrado, lógica 3.3 V | Espressif / compatible | ESP32 | $10.980 | Por definir | $10.980 | Por agregar |
 | 1 | Sensor / microinterruptor | Sensor de contacto para detectar interacción | Por definir | Por definir | Por definir | Por definir | Por definir | Por agregar |
 | 1 | LED | LED indicador visual | Por definir | Por definir | Por definir | Por definir | Por definir | Por agregar |
 | 1 | Resistencia | Resistencia para protección del LED | Por definir | Por definir | Por definir | Por definir | Por definir | Por agregar |
@@ -38,8 +38,10 @@ El archivo BOM debe incluir las siguientes columnas:
 | 1 | Protoboard | Placa de prototipado | Por definir | Por definir | Por definir | Por definir | Por definir | Por agregar |
 | Varios | Cables Dupont | Cables de conexión | Por definir | Por definir | Por definir | Por definir | Por definir | Por agregar |
 | 1 | Cable USB | Alimentación y programación de ESP8266 | Por definir | Por definir | Por definir | Por definir | Por definir | Por agregar |
-| 1 | Encapsulado impreso en 3D | Pastillero 100 × 80 × 30 mm | Diseño propio | — | Impresión 3D | Por definir | Por definir | — |
+| 2 | Batería Li-ion 18650| 3,7 V; recargable; capacidad 6800 mAh| UltraFire | BCR18650 | Por definir | Por definir | Por definir | Por agregar |
 
+| 1 | Encapsulado impreso en 3D | Pastillero 100 × 80 × 30 mm | Diseño propio | — | Impresión 3D | Por definir | Por definir | — |
+| 1 | Portabaterías doble 18650| conexión USB| No identificado | Por definir | Por definir | Por definir | Por definir |
 ---
 
 ## Presupuesto Total
