@@ -39,7 +39,6 @@ El archivo BOM debe incluir las siguientes columnas:
 | Varios | Cables Dupont | Cables de conexión | Por definir | Por definir | Por definir | Por definir | Por definir | Por agregar |
 | 1 | Cable USB | Alimentación y programación de ESP8266 | Por definir | Por definir | Por definir | Por definir | Por definir | Por agregar |
 | 2 | Batería Li-ion 18650| 3,7 V; recargable; capacidad 6800 mAh| UltraFire | BCR18650 | Por definir | Por definir | Por definir | Por agregar |
-
 | 1 | Encapsulado impreso en 3D | Pastillero 100 × 80 × 30 mm | Diseño propio | — | Impresión 3D | Por definir | Por definir | — |
 | 1 | Portabaterías doble 18650| conexión USB| No identificado | Por definir | Por definir | Por definir | Por definir |
 ---
