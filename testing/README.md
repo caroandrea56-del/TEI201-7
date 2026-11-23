@@ -1,89 +1,307 @@
-# Testing y Validación
+# Testing del prototipo
 
-## Objetivo
+## 1. Objetivo de las pruebas
 
-Evaluar el funcionamiento de los componentes electrónicos del pastillero inteligente y registrar los problemas identificados durante el desarrollo del prototipo.
+El objetivo de las pruebas es verificar que el pastillero inteligente funcione de manera estable y que sea capaz de detectar correctamente la interacción del usuario, activar las alertas y registrar la información necesaria para monitorear la toma de medicamentos.
 
-Las pruebas se enfocan en la detección de interacción mediante el sensor y el funcionamiento de las alertas visuales y sonoras.
-
----
-
-## Carpetas
-
-### `evidencias/`
-
-Fotografías y registros del funcionamiento del sensor, LED, buzzer y prototipo.
-
-### `reportes/`
-
-Descripción de las pruebas realizadas, problemas encontrados y soluciones implementadas.
-
-### `datos/`
-
-Registros de funcionamiento y mediciones obtenidas durante las pruebas.
+Las pruebas consideran tanto el funcionamiento del hardware como la respuesta del sistema frente a distintos eventos de uso.
 
 ---
 
-## Metodología de Testing
+## 2. Elementos evaluados
 
-El sistema se ha desarrollado mediante pruebas incrementales de sus componentes.
+Durante las pruebas se evaluarán los siguientes elementos:
 
-### Prueba del Sensor
-
-Se utiliza un sensor o microinterruptor conectado al pin D2 / GPIO4 de la ESP8266.
-
-El programa lee su estado mediante `digitalRead()` e identifica una nueva interacción comparando el estado actual con el anterior.
-
-### Prueba del LED
-
-El LED se encuentra conectado al pin D5 / GPIO14.
-
-El código permite encenderlo cuando se activa la alarma y apagarlo cuando se detecta una nueva interacción.
-
-### Prueba del Buzzer
-
-El buzzer pasivo está conectado al pin D6 / GPIO12.
-
-Durante el desarrollo se identificó que no era suficiente utilizar `digitalWrite()` para generar el sonido, por lo que se implementó la función `tone()`.
-
-### Prueba de Integración
-
-La lógica programada permite relacionar el sensor con las alertas:
-
-1. Se detecta una interacción.
-2. Se activa el LED y el buzzer.
-3. Se detecta una segunda interacción.
-4. Se desactivan ambas alertas.
-
-La estabilidad del sistema durante cinco minutos continuos debe comprobarse mediante una prueba física.
+- Funcionamiento del sensor.
+- Activación del LED.
+- Activación del buzzer.
+- Tiempo de respuesta del sistema.
+- Registro de eventos.
+- Detección de una dosis confirmada.
+- Funcionamiento del dashboard.
+- Persistencia de los datos.
+- Estabilidad del sistema durante múltiples ciclos de uso.
 
 ---
 
-## Errores Encontrados y Soluciones
+## 3. Condiciones de prueba
 
-| Problema | Causa identificada o posible | Solución |
-|---|---|---|
-| Buzzer sin sonido | Se estaba utilizando un buzzer pasivo sin generar una frecuencia | Implementación de `tone()` |
-| Sensor sin respuesta | Posible error de conexión o configuración | Revisar GPIO4 y `INPUT_PULLUP` |
-| LED sin encender | Posible error de polaridad o conexión | Verificar polaridad, resistencia y GPIO14 |
-| Alarma que no se desactiva | Posible error en la detección de una segunda interacción | Revisar la comparación de estados del sensor |
+Las pruebas se realizarán con el prototipo armado y energizado mediante conexión USB.
 
-El problema del buzzer está documentado como una dificultad encontrada durante el desarrollo. Los demás corresponden a posibles fallas y procedimientos de revisión.
+El sistema estará compuesto por:
 
----
+- ESP32.
+- Sensor o microinterruptor.
+- LED.
+- Buzzer pasivo.
+- Resistencias y conexiones correspondientes.
+- Estructura física del pastillero.
 
-## Validación del Prototipo
-
-El sistema permite desarrollar una solución orientada al recordatorio de medicamentos mediante alertas visuales y sonoras.
-
-La conectividad inalámbrica con Pill Up y la confirmación de toma de medicamentos requieren desarrollo y validación adicionales.
+Las pruebas se realizarán simulando el uso normal del dispositivo.
 
 ---
 
-## Próximas Pruebas
+## 4. Protocolo de prueba
 
-- Verificar el funcionamiento continuo del sistema durante cinco minutos.
-- Registrar evidencias fotográficas y videos de las alertas.
-- Evaluar la integración electrónica dentro del encapsulado.
-- Probar la comunicación futura con Pill Up.
-- Realizar pruebas de usabilidad con usuarios.
+### Prueba 1: detección del sensor
+
+Objetivo:
+
+Verificar que el sistema detecte correctamente la activación del sensor.
+
+Procedimiento:
+
+1. Encender el sistema.
+2. Activar manualmente el sensor.
+3. Observar la respuesta del sistema.
+4. Repetir el procedimiento 10 veces.
+
+Criterio de éxito:
+
+El sensor debe ser detectado correctamente en al menos 9 de 10 intentos.
+
+Datos a registrar:
+
+- Número de intentos.
+- Número de detecciones correctas.
+- Número de errores.
+- Porcentaje de éxito.
+
+---
+
+### Prueba 2: funcionamiento del LED
+
+Objetivo:
+
+Verificar que el LED se active correctamente cuando exista una alerta.
+
+Procedimiento:
+
+1. Activar una alerta.
+2. Observar si el LED se enciende.
+3. Confirmar la interacción con el sensor.
+4. Verificar que el LED se apague.
+5. Repetir 10 veces.
+
+Criterio de éxito:
+
+El LED debe encenderse y apagarse correctamente en al menos 9 de 10 ciclos.
+
+---
+
+### Prueba 3: funcionamiento del buzzer
+
+Objetivo:
+
+Verificar que el buzzer pasivo emita correctamente la alerta sonora.
+
+Procedimiento:
+
+1. Activar una alerta.
+2. Comprobar que el buzzer emita sonido.
+3. Activar el sensor para confirmar la interacción.
+4. Verificar que el buzzer se detenga.
+5. Repetir 10 veces.
+
+Criterio de éxito:
+
+El buzzer debe funcionar correctamente en al menos 9 de 10 ciclos.
+
+---
+
+### Prueba 4: tiempo de respuesta
+
+Objetivo:
+
+Medir el tiempo que transcurre entre la activación de una alerta y la interacción del usuario.
+
+Procedimiento:
+
+1. Activar una alerta.
+2. Iniciar el registro del tiempo.
+3. Activar el sensor.
+4. Registrar el tiempo transcurrido.
+5. Repetir al menos 5 veces.
+
+Datos a registrar:
+
+- Tiempo de respuesta en segundos.
+- Tiempo mínimo.
+- Tiempo máximo.
+- Tiempo promedio.
+
+Criterio de éxito:
+
+El sistema debe registrar correctamente el tiempo de respuesta en cada prueba.
+
+---
+
+### Prueba 5: registro de eventos
+
+Objetivo:
+
+Verificar que los eventos generados por el dispositivo queden registrados correctamente.
+
+Procedimiento:
+
+1. Activar una alerta.
+2. Activar el sensor.
+3. Revisar el registro generado.
+4. Confirmar que aparezca el evento correspondiente.
+5. Repetir 5 veces.
+
+Criterio de éxito:
+
+Todos los eventos deben quedar registrados correctamente.
+
+---
+
+### Prueba 6: persistencia de datos
+
+Objetivo:
+
+Verificar que la información registrada no se pierda al reiniciar el sistema.
+
+Procedimiento:
+
+1. Generar al menos 5 eventos.
+2. Verificar que aparezcan en el historial.
+3. Apagar o reiniciar el dispositivo.
+4. Volver a encenderlo.
+5. Revisar nuevamente el historial.
+
+Criterio de éxito:
+
+Los datos registrados antes del reinicio deben seguir disponibles.
+
+---
+
+### Prueba 7: funcionamiento del dashboard
+
+Objetivo:
+
+Verificar que el dashboard muestre correctamente la información generada por el dispositivo.
+
+Procedimiento:
+
+1. Encender el sistema.
+2. Acceder al dashboard.
+3. Generar diferentes eventos.
+4. Observar la actualización de los indicadores.
+5. Comparar la información mostrada con los eventos realizados.
+
+Criterio de éxito:
+
+El dashboard debe mostrar correctamente:
+
+- Dosis programadas.
+- Dosis tomadas.
+- Dosis pendientes.
+- Porcentaje de cumplimiento.
+- Estado de la alarma.
+- Historial de eventos.
+
+---
+
+### Prueba 8: funcionamiento continuo
+
+Objetivo:
+
+Evaluar la estabilidad general del sistema durante múltiples ciclos de uso.
+
+Procedimiento:
+
+1. Encender el dispositivo.
+2. Realizar 20 ciclos consecutivos de alerta e interacción.
+3. Registrar cualquier falla.
+4. Revisar el funcionamiento del sensor, LED, buzzer y sistema de registro.
+
+Criterio de éxito:
+
+El sistema debe completar al menos 18 de los 20 ciclos sin fallas.
+
+---
+
+## 5. Registro de resultados
+
+Los resultados de cada prueba deberán registrarse en una tabla.
+
+Ejemplo:
+
+| Prueba | Intentos | Éxitos | Errores | Resultado |
+|---|---:|---:|---:|---|
+| Sensor | 10 | Por completar | Por completar | Por completar |
+| LED | 10 | Por completar | Por completar | Por completar |
+| Buzzer | 10 | Por completar | Por completar | Por completar |
+| Registro | 5 | Por completar | Por completar | Por completar |
+| Persistencia | 1 | Por completar | Por completar | Por completar |
+| Dashboard | 5 | Por completar | Por completar | Por completar |
+
+---
+
+## 6. Evidencia
+
+La evidencia de las pruebas se almacenará dentro de esta carpeta e incluirá:
+
+- Fotografías del prototipo durante las pruebas.
+- Capturas del dashboard.
+- Registro de datos.
+- Fotografías del montaje.
+- Videos breves del funcionamiento.
+- Resultados de las pruebas.
+
+---
+
+## 7. Fallas detectadas y mejoras
+
+Durante las pruebas se deberán registrar todas las fallas observadas.
+
+Para cada falla se documentará:
+
+- Descripción del problema.
+- Condición en que ocurrió.
+- Posible causa.
+- Solución aplicada.
+- Resultado después de la corrección.
+
+Ejemplo:
+
+Falla detectada:
+
+El buzzer no emitía sonido utilizando una señal digital simple.
+
+Causa:
+
+El componente utilizado corresponde a un buzzer pasivo.
+
+Solución:
+
+Se utilizó una señal de frecuencia mediante la función correspondiente para generar el sonido.
+
+Resultado:
+
+El buzzer comenzó a funcionar correctamente.
+
+---
+
+## 8. Validación del problema
+
+El prototipo busca apoyar la adherencia al tratamiento mediante recordatorios y confirmación de interacción con el pastillero.
+
+La validación final deberá analizar si el sistema permite:
+
+- Alertar al usuario cuando corresponde una toma.
+- Detectar la interacción con el pastillero.
+- Registrar la confirmación de una dosis.
+- Mantener un historial de eventos.
+- Entregar información útil sobre el cumplimiento.
+
+A partir de los resultados obtenidos se evaluará si el prototipo responde adecuadamente al problema identificado y qué mejoras son necesarias para futuras iteraciones.
+
+---
+
+## 9. Estado actual
+
+Protocolo de pruebas definido.
+
+Los resultados cuantitativos serán incorporados una vez realizadas las pruebas con el prototipo final.

@@ -1,191 +1,83 @@
-# Pastillero Inteligente
+## Estado de la Entrega
 
-Sistema IoT para apoyar la correcta administración de medicamentos mediante alertas visuales y sonoras, detección de interacción con el dispositivo y organización de dosis en compartimientos independientes.
+El repositorio reúne la documentación técnica y de diseño correspondiente al prototipo final del pastillero inteligente.
 
-El proyecto busca disminuir olvidos, confusiones de horario y dificultades en el seguimiento de tratamientos farmacológicos diarios.
+La entrega incluye:
 
----
-
-## Equipo
-
-| Integrante | Rol | GitHub |
-|---|---|---|
-| Greta Ferrer | Diseño 3D e integración | [@GretaFerrer](https://github.com/GretaFerrer) |
-| Carolina Gallardo | Hardware | [@caroandrea56-del](https://github.com/caroandrea56-del) |
-| Martina Penschke | Software / Firmware | [@martinapenschke0317-a11y](https://github.com/martinapenschke0317-a11y) |
-| Estela Pérez | Testing e iteración | [@estelitaperezUAI](https://github.com/estelitaperezUAI) |
-
----
-
-## Descripción del problema
-
-Las personas que siguen tratamientos farmacológicos diarios pueden olvidar la hora de tomar sus medicamentos, confundirse respecto de las dosis o no tener claridad sobre si una dosis ya fue tomada.
-
-Esto puede generar interrupciones en el tratamiento y aumentar la necesidad de supervisión por parte de familiares o cuidadores.
-
-Nuestro proyecto se relaciona con el **ODS 3: Salud y Bienestar**, ya que busca facilitar el seguimiento y organización de la toma diaria de medicamentos.
+- Prototipo físico del pastillero.
+- ESP32 como unidad principal de procesamiento.
+- Sensor o microinterruptor para detección de interacción.
+- LED como alerta visual.
+- Buzzer pasivo como alerta sonora.
+- Firmware del dispositivo.
+- Documentación del hardware.
+- BOM con componentes y costos de referencia.
+- Esquemas y documentación de conexiones.
+- Evidencia fotográfica del prototipo.
+- Documentación de las iteraciones realizadas.
+- Modelo y documentación de diseño 3D.
+- Protocolo de testing.
+- Documentación de fuentes y uso de inteligencia artificial.
+- Informes y presentaciones desarrollados durante el proyecto.
 
 ---
 
-## Arquitectura del sistema
+## Validación del Sistema
 
-Sensor / microinterruptor → ESP8266 → procesamiento de la señal → LED + buzzer → interacción del usuario
+La validación del prototipo considera el funcionamiento integrado de sus principales elementos:
 
-El sistema funciona actualmente de la siguiente manera:
+1. Generación de una alerta asociada a una dosis.
+2. Activación de una señal visual mediante LED.
+3. Activación de una señal sonora mediante buzzer.
+4. Detección de interacción mediante el sensor.
+5. Procesamiento del evento mediante la ESP32.
+6. Registro de la interacción.
+7. Desactivación de la alerta.
+8. Generación de información relacionada con el cumplimiento de la dosis.
 
-1. El sensor detecta una interacción.
-2. La ESP8266 recibe y procesa la señal.
-3. Se enciende un LED como alerta visual.
-4. Se activa un buzzer como alerta sonora.
-5. Una nueva interacción permite apagar la alerta.
+Los protocolos utilizados para evaluar el sistema se encuentran documentados en:
 
-### Conexiones actuales
-
-- Sensor → D2 / GPIO4
-- LED → D5 / GPIO14
-- Buzzer → D6 / GPIO12
-- Todos los componentes comparten GND.
-
-## Aplicación móvil — Pill Up
-
-Como complemento del pastillero inteligente, se está desarrollando **Pill Up**, una aplicación móvil mediante Flutter que busca facilitar la organización y el seguimiento de los medicamentos.
-
-La aplicación contempla funciones relacionadas con la programación de horarios, visualización de medicamentos y seguimiento de las dosis.
-
-El desarrollo de Pill Up se encuentra en un repositorio independiente, donde se puede revisar el código fuente y los avances realizados.
-
-**[Ver repositorio de Pill Up](https://github.com/TICS316/proyecto-caroligallardo)**
-
-*La integración entre la aplicación móvil y el dispositivo físico forma parte del desarrollo del proyecto.*
-
-## Instrucciones de uso
-
-### Cargar el firmware
-
-1. Abrir el proyecto en **Arduino IDE**.
-2. Conectar la ESP8266 al computador mediante USB.
-3. Seleccionar la placa ESP8266 correspondiente.
-4. Seleccionar el puerto correcto.
-5. Abrir el archivo `.ino` del proyecto.
-6. Compilar el programa.
-7. Cargar el código en la ESP8266.
-
-### Probar el sistema
-
-1. Conectar el sensor, LED y buzzer según las conexiones indicadas.
-2. Alimentar la ESP8266 mediante USB.
-3. Activar el sensor.
-4. Verificar que el LED se encienda.
-5. Verificar que el buzzer emita sonido.
-6. Activar nuevamente el sensor para apagar la alerta.
+`testing/`
 
 ---
 
-## Prototipo físico
+## Diseño Final
 
-El prototipo actual corresponde a un pastillero rectangular de:
+El diseño físico corresponde a un pastillero rectangular de ocho compartimientos, organizado en una distribución de 4 × 2.
 
-- 10 cm de ancho.
-- 8 cm de fondo.
-- 3 cm de alto.
-- 8 compartimientos independientes.
-- Distribución de 4 x 2.
-- Tapas individuales.
-- Bisagras ubicadas sobre una línea central.
-- Diseño compacto y portátil.
+La estructura fue desarrollada considerando:
 
-El modelo fue desarrollado mediante **OpenSCAD** y preparado para fabricación mediante impresión 3D.
+- Portabilidad.
+- Integración electrónica.
+- Accesibilidad.
+- Reparabilidad.
+- Fabricación mediante impresión 3D.
+- Organización interna de los componentes.
 
----
+La documentación asociada al modelo tridimensional se encuentra en:
 
-## Proceso de iteración
-
-El primer prototipo tenía una forma circular y utilizaba un mecanismo más complejo.
-
-Al imprimirlo, detectamos que:
-
-- el tamaño era mayor de lo esperado;
-- no cumplía con nuestras expectativas de portabilidad;
-- el mecanismo era más complejo de lo necesario.
-
-A partir de esa prueba realizamos distintas iteraciones:
-
-- cambio de diseño circular a rectangular;
-- simplificación del mecanismo;
-- reducción de la altura;
-- incorporación de 8 compartimientos;
-- modificación del sistema de apertura;
-- ubicación de las bisagras en una línea central;
-- corrección de los ejes de giro;
-- separación de las piezas para facilitar la impresión 3D;
-- integración progresiva del sensor, LED y buzzer.
+`diseno_3d/`
 
 ---
 
-## Testing y Debugging
+## Documentación del Proyecto
 
-El sistema fue probado de manera incremental.
+La documentación completa se distribuye de la siguiente manera:
 
-Se realizaron pruebas de:
-
-- funcionamiento del sensor;
-- encendido y apagado del LED;
-- funcionamiento del buzzer;
-- interacción entre sensor y actuadores;
-- dimensiones del prototipo;
-- apertura de las tapas;
-- diseño de bisagras;
-- impresión 3D de las piezas.
-
-Uno de los principales aprendizajes fue que el buzzer utilizado es pasivo, por lo que fue necesario utilizar `tone()` para generar el sonido correctamente.
-
-También se realizaron distintas pruebas del diseño 3D hasta conseguir que las tapas se abrieran correctamente desde la línea central.
+- `hardware/` — componentes, BOM, esquemas y fotografías.
+- `firmware/` — código fuente de la ESP32.
+- `diseno_3d/` — modelos, planos y renders.
+- `iteraciones/` — evolución del diseño y del prototipo.
+- `testing/` — metodología y resultados de validación.
+- `docs/` — informes y presentaciones.
+- `FUENTES.md` — referencias, dependencias, código externo y herramientas de inteligencia artificial utilizadas.
 
 ---
 
-## Estructura del repositorio
+## Resultado del Proyecto
 
-- `diseno-3d/` — Archivos OpenSCAD, STL, renders y modelos del pastillero.
-- `docs/` — Presentaciones y documentación del proyecto.
-- `hardware/` — Circuito, conexiones y componentes electrónicos.
-- `iteraciones/` — Evidencia del desarrollo y evolución del prototipo.
-- `software/` — Código fuente para la ESP8266.
-- `testing/` — Pruebas realizadas, errores encontrados y soluciones.
-- `FUENTES.md` — Bibliografía, referencias y fuentes utilizadas.
+El proyecto permitió desarrollar un prototipo de pastillero inteligente que combina diseño físico, electrónica y procesamiento digital para apoyar la organización de medicamentos.
 
----
+La propuesta integra alertas visuales y sonoras con detección de interacción del usuario y registro de eventos, permitiendo transformar una acción física sobre el pastillero en información útil para el seguimiento de las dosis.
 
-## Tecnologías utilizadas
-
-- ESP8266 NodeMCU
-- Arduino IDE
-- C++ / Arduino
-- OpenSCAD
-- Impresión 3D
-- GitHub
-- GitHub Desktop
-
----
-
-## Componentes utilizados
-
-- ESP8266 NodeMCU
-- Sensor / microinterruptor
-- LED
-- Resistencia
-- Buzzer pasivo
-- Protoboard
-- Cables Dupont
-- Cable USB
-
----
-
-## Próximos pasos
-
-- Integrar completamente la electrónica dentro del encapsulado.
-- Incorporar programación de horarios.
-- Mejorar el sistema de alertas.
-- Incorporar conectividad mediante WiFi.
-- Realizar pruebas con usuarios.
-- Evaluar facilidad de uso, portabilidad y confiabilidad.
-- Continuar mejorando el diseño físico del pastillero.
+El desarrollo se realizó mediante un proceso iterativo en el que se modificaron la geometría, dimensiones, sistema de apertura, integración electrónica y lógica de funcionamiento hasta obtener una versión más compacta, reparable y coherente con el problema abordado.
