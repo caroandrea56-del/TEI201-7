@@ -58,15 +58,17 @@ Los componentes del circuito deben compartir una conexión GND común cuando cor
 
 ## Flujo del Sistema
 
-Sensor / microinterruptor  
+Inicio de alarma simulada al reiniciar la ESP32  
 ↓  
-ESP8266  
+ESP32 procesa y activa la alarma  
 ↓  
-Procesamiento de la señal  
+LED rojo parpadea + buzzer emite sonido (funcionamiento previsto)  
 ↓  
-LED + Buzzer  
+Usuario presiona el pulsador  
 ↓  
-Alerta al usuario
+ESP32 detecta la pulsación  
+↓  
+Se desactivan las alertas visual y sonora (apagado del LED comprobado)
 
 ---
 
