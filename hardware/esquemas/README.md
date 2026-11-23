@@ -40,19 +40,19 @@ Ejemplo:
 
 ## Notas de Diseño
 
-El circuito fue diseñado utilizando una placa **ESP8266 NodeMCU** como unidad principal de procesamiento.
+El circuito electrónico del pastillero inteligente utiliza una placa **ESP32 Dev Module con módulo ESP-WROOM-32**, que incorpora conectividad Wi-Fi y Bluetooth y permite controlar los componentes electrónicos del prototipo.
 
-Se eligió esta placa porque permite controlar sensores y actuadores, además de incorporar conectividad WiFi para futuras etapas del proyecto.
+Se seleccionó esta placa por su capacidad de controlar las alertas visuales y sonoras, además de permitir la incorporación de funciones de conectividad en el sistema.
 
-El sensor / microinterruptor se utiliza para detectar la interacción del usuario con el pastillero.
+El **LED rojo**, conectado al GPIO25 mediante una resistencia de 300 Ω, funciona como alerta visual mediante parpadeos.
 
-El LED funciona como alerta visual y el buzzer pasivo como alerta sonora.
+El **pulsador**, conectado al GPIO27 y configurado mediante `INPUT_PULLUP`, permite que el usuario silencie la alarma. Se comprobó que una pulsación detiene el parpadeo del LED.
 
-Durante las pruebas se comprobó que el buzzer requiere una señal de frecuencia para funcionar correctamente, por lo que se utiliza la función `tone()` en el código.
+El **buzzer** está destinado a proporcionar una alerta sonora. Se contempla su control desde el GPIO26 mediante un transistor BC547 y una resistencia de 1 kΩ. Sin embargo, su tipo, tensión y consumo todavía deben verificarse antes de completar y probar esta conexión.
 
-El sensor está configurado mediante `INPUT_PULLUP`, permitiendo simplificar el circuito al utilizar la resistencia interna de la ESP8266.
+La alimentación definitiva considera dos baterías recargables de ion-litio tipo 18650 y un portabaterías. Su salida eléctrica y condiciones de seguridad deben verificarse antes de conectarlo a la ESP32.
 
-Todos los componentes comparten una conexión GND común.
+Los componentes del circuito deben compartir una conexión GND común cuando corresponda.
 
 ---
 
