@@ -4,256 +4,229 @@
 
 Esta carpeta contiene la documentación correspondiente al circuito electrónico del pastillero inteligente.
 
-El sistema utiliza una **ESP32** como unidad principal de procesamiento y conectividad, junto con un sensor o microinterruptor, un LED y un buzzer pasivo.
+El sistema utiliza una **ESP32** como unidad principal de procesamiento y conectividad.
 
-El circuito permite detectar la interacción del usuario con el pastillero y generar alertas visuales y sonoras asociadas a la toma de medicamentos.
+El circuito integra:
 
----
-
-## 2. Archivos del esquema
-
-Los archivos correspondientes al circuito deberán almacenarse en esta carpeta.
-
-### Fritzing
-
-Archivos recomendados:
-
-- `circuito_completo.fzz` — archivo editable del circuito.
-- `esquema_circuito.png` — imagen del montaje electrónico.
-- `esquematico_final.png` — esquema eléctrico final.
-
-### Wokwi
-
-Si se utiliza Wokwi para complementar la documentación:
-
-- `wokwi_diagram.json`
-- `wokwi_screenshot.png`
-- `wokwi_link.txt`
-
----
-
-## 3. Componentes del circuito
-
-El prototipo está compuesto por:
-
-- ESP32.
-- Sensor o microinterruptor.
-- LED indicador.
-- Resistencia limitadora para LED.
+- Pulsador o sensor de interacción.
+- LED rojo.
 - Buzzer pasivo.
+- Transistor BC547.
+- Resistencias.
 - Protoboard.
-- Cables Dupont.
-- Cable USB de alimentación y programación.
-
-Todos los elementos electrónicos comparten una tierra común (**GND**).
+- Alimentación mediante USB-C.
 
 ---
 
-## 4. Conexiones generales
+## 2. Conexiones Definitivas
 
-| Componente | Conexión ESP32 | Función |
-|---|---|---|
-| Sensor / microinterruptor | GPIO digital | Detectar apertura o interacción con el pastillero |
-| LED | GPIO de salida | Alerta visual |
-| Buzzer pasivo | GPIO de salida PWM | Alerta sonora |
-| Sensor | GND | Referencia eléctrica |
-| LED | GND mediante circuito correspondiente | Retorno eléctrico |
-| Buzzer | GND | Retorno eléctrico |
-| ESP32 | USB / 5 V | Alimentación y programación |
-
-**Nota:** la numeración definitiva de los GPIO se actualizará después de comprobar físicamente las conexiones realizadas en la ESP32.
-
-No se fija en esta documentación una numeración de GPIO sin verificarla directamente en el montaje final.
+| Componente | Pin ESP32 | Conexión |
+|---|---:|---|
+| LED rojo | GPIO25 | Resistencia de 300 Ω en serie |
+| Pulsador / sensor | GPIO27 | Segundo terminal conectado a GND |
+| Buzzer pasivo | GPIO26 | Control mediante resistencia de 1 kΩ y transistor BC547 |
+| Tierra | GND | Tierra común |
+| Alimentación | USB-C | Alimentación y programación |
 
 ---
 
-## 5. Sensor / microinterruptor
+## 3. Sensor / Pulsador
 
-El microinterruptor funciona como entrada digital del sistema.
+El pulsador permite detectar la interacción física del usuario con el pastillero.
 
-Su objetivo es detectar una interacción física del usuario con el pastillero.
+La conexión utilizada es:
 
-La configuración prevista utiliza la resistencia interna de la ESP32 mediante:
+`GPIO27 → pulsador → GND`
+
+El GPIO27 se configura mediante:
 
 `INPUT_PULLUP`
 
-En esta configuración:
+Por lo tanto:
 
-- Estado normal del sensor: `HIGH`.
-- Sensor activado: `LOW`.
+- Sin pulsar: `HIGH`.
+- Pulsado: `LOW`.
 
-Esto permite reducir la cantidad de componentes externos necesarios para la lectura digital.
-
----
-
-## 6. LED de alerta
-
-El LED funciona como indicador visual.
-
-Cuando el sistema detecta una condición de alerta asociada a una dosis pendiente, la ESP32 activa el LED.
-
-El LED se conecta mediante una resistencia limitadora de corriente.
-
-Para el prototipo se considera una resistencia de:
-
-**220 Ω**
-
-La resistencia protege tanto el LED como la salida digital utilizada.
+Esta configuración utiliza la resistencia pull-up interna de la ESP32 y simplifica el circuito.
 
 ---
 
-## 7. Buzzer pasivo
+## 4. LED
 
-El buzzer entrega la alerta sonora del sistema.
+El LED rojo funciona como alerta visual.
 
-El componente utilizado corresponde a un **buzzer pasivo**, por lo que no basta únicamente con mantener una salida digital en nivel alto.
+La señal de control proviene de:
 
-Debe utilizarse una señal periódica o PWM con una frecuencia adecuada para generar sonido.
+`GPIO25`
 
-La ESP32 genera esta señal mediante una de sus salidas compatibles.
+El LED incorpora una resistencia de **300 Ω** en serie.
 
-Cuando la dosis es confirmada, la señal sonora se detiene.
+Flujo simplificado:
 
----
+`GPIO25 → resistencia 300 Ω → LED → GND`
 
-## 8. ESP32
-
-La ESP32 corresponde al controlador principal del dispositivo.
-
-Sus funciones dentro del prototipo son:
-
-- Leer el estado del sensor.
-- Procesar la interacción del usuario.
-- Activar el LED.
-- Controlar el buzzer.
-- Gestionar las alertas.
-- Registrar eventos.
-- Procesar información de cumplimiento.
-- Establecer comunicación mediante WiFi.
-- Permitir la conexión con el sistema de visualización de datos.
-
-La conectividad WiFi integrada evita la necesidad de incorporar un módulo inalámbrico independiente.
+Cuando GPIO25 se encuentra en estado `HIGH`, el LED se enciende.
 
 ---
 
-## 9. Flujo electrónico del sistema
+## 5. Buzzer Pasivo
 
-El funcionamiento general del circuito corresponde a:
+El buzzer funciona como alerta sonora.
 
-Sensor / microinterruptor  
+La señal de control se genera desde:
+
+`GPIO26`
+
+La salida controla el buzzer mediante una etapa formada por:
+
+- Resistencia de 1 kΩ.
+- Transistor NPN BC547.
+- Buzzer pasivo.
+
+Flujo de control:
+
+`GPIO26 → resistencia 1 kΩ → base BC547`
+
+El transistor controla el paso de corriente hacia el buzzer.
+
+Esta configuración evita utilizar directamente el GPIO de la ESP32 como fuente de corriente para el actuador.
+
+---
+
+## 6. Transistor BC547
+
+El BC547 funciona como elemento de conmutación.
+
+Conexión funcional:
+
+- Base: recibe la señal desde GPIO26 mediante resistencia de 1 kΩ.
+- Emisor: conectado a GND.
+- Colector: conectado al circuito del buzzer.
+
+Todos los elementos utilizan una referencia GND común.
+
+---
+
+## 7. Tierra Común
+
+Los siguientes elementos comparten la misma conexión a tierra:
+
+- ESP32.
+- Pulsador.
+- LED.
+- Transistor.
+- Buzzer.
+
+Mantener GND común es necesario para asegurar referencias eléctricas correctas entre sensores, actuadores y microcontrolador.
+
+---
+
+## 8. Alimentación
+
+Durante las pruebas, la ESP32 se alimenta mediante USB-C.
+
+El cable USB permite simultáneamente:
+
+- Alimentar la placa.
+- Programar el firmware.
+- Utilizar el Monitor Serial.
+
+---
+
+## 9. Flujo del Sistema
+
+El flujo electrónico de alerta es:
+
+ESP32  
+↓  
+GPIO25 → LED  
+↓  
+GPIO26 → resistencia 1 kΩ → BC547 → buzzer
+
+El flujo de interacción es:
+
+Usuario  
+↓  
+Pulsador / sensor  
+↓  
+GPIO27  
 ↓  
 ESP32  
 ↓  
 Procesamiento del evento  
 ↓  
-Registro de información  
+Registro de interacción  
 ↓  
-LED + buzzer  
-↓  
-Alerta al usuario
-
-Cuando existe una alerta y el usuario interactúa con el pastillero:
-
-Alerta activa  
-↓  
-Usuario abre o interactúa con el pastillero  
-↓  
-Microinterruptor cambia de estado  
-↓  
-ESP32 detecta el evento  
-↓  
-Se registra la interacción  
-↓  
-LED y buzzer se desactivan  
-↓  
-El sistema actualiza el estado de la dosis
+Desactivación de la alerta
 
 ---
 
-## 10. Alimentación
+## 10. Función de la ESP32
 
-Durante el desarrollo y las pruebas, la ESP32 se alimenta mediante conexión USB.
+La ESP32 se encarga de:
 
-La alimentación USB permite simultáneamente:
-
-- Energizar el microcontrolador.
-- Programar el firmware.
-- Visualizar información mediante el monitor serial.
-- Realizar pruebas del sistema.
-
-Los sensores y actuadores deben conectarse respetando los niveles eléctricos compatibles con la ESP32.
-
----
-
-## 11. Tierra común
-
-Todos los componentes deben compartir una conexión común a GND.
-
-Esto incluye:
-
-- ESP32.
-- Sensor.
-- LED.
-- Buzzer.
-
-La utilización de una referencia de tierra común es necesaria para asegurar una lectura y activación correcta de los elementos electrónicos.
+- Leer el pulsador.
+- Detectar cambios de estado.
+- Controlar el LED.
+- Controlar la señal del buzzer.
+- Procesar eventos.
+- Registrar información.
+- Gestionar conectividad WiFi.
+- Ejecutar el servidor web.
+- Actualizar el dashboard.
 
 ---
 
-## 12. Consideraciones de montaje
+## 11. Montaje
 
-Durante el armado del circuito se debe verificar:
+El montaje se realiza sobre protoboard para permitir modificaciones y reparación durante el desarrollo.
 
-- Polaridad correcta del LED.
-- Valor correcto de la resistencia.
-- Conexión correcta del sensor.
-- Conexión correcta del buzzer.
-- Continuidad de GND.
-- Ausencia de cables sueltos.
-- Ausencia de cortocircuitos.
-- Correcta alimentación de la ESP32.
-- Correspondencia entre los GPIO utilizados físicamente y los definidos en el firmware.
+La distribución debe mantener:
 
----
-
-## 13. Integración con el encapsulado
-
-El circuito electrónico debe integrarse dentro del encapsulado diseñado para el pastillero.
-
-El diseño debe permitir:
-
+- Conexiones cortas y ordenadas.
+- GND común.
+- Separación entre alimentación y señales.
 - Acceso a la ESP32.
-- Acceso al cable USB.
-- Acceso al buzzer.
-- Reemplazo del sensor.
-- Revisión de las conexiones.
-- Apertura del dispositivo sin destruir el encapsulado.
-- Reparación y mantenimiento de los componentes.
-
-El sistema electrónico no debe quedar sellado permanentemente dentro de la estructura.
+- Acceso al pulsador.
+- Acceso al buzzer y transistor.
 
 ---
 
-## 14. Documentación gráfica requerida
+## 12. Reparabilidad
 
-La versión final deberá incluir al menos:
+El circuito se integra dentro de un encapsulado que puede abrirse sin destruirse.
 
-1. Esquema completo del circuito.
-2. Imagen del montaje real.
-3. Identificación de la ESP32.
-4. Identificación del sensor.
-5. Identificación del LED.
-6. Identificación del buzzer.
-7. Identificación de alimentación y GND.
-8. GPIO definitivo de cada componente.
+Esto permite:
+
+- Revisar conexiones.
+- Sustituir la ESP32.
+- Sustituir el pulsador.
+- Cambiar el LED.
+- Sustituir el transistor.
+- Sustituir el buzzer.
+- Revisar el cableado.
 
 ---
 
-## 15. Nomenclatura de archivos
+## 13. Archivos del Esquema
 
-Para mantener un registro ordenado de las iteraciones se utilizarán nombres descriptivos.
+Esta carpeta debe conservar la documentación gráfica utilizada para representar el circuito.
 
-Ejemplos:
+Nombres utilizados:
+
+`esquema_circuito.png`
+
+`circuito_completo.fzz`
+
+También puede conservarse una fotografía del montaje real:
+
+`montaje_real.jpg`
+
+---
+
+## 14. Nomenclatura
+
+Para documentar versiones anteriores del esquema pueden utilizarse nombres como:
 
 `v1_esquema_inicial.png`
 
@@ -261,28 +234,22 @@ Ejemplos:
 
 `v3_esquema_final.png`
 
-También puede utilizarse fecha en formato:
-
-`YYYYMMDD_descripcion`
-
-Ejemplo:
-
-`20261122_esquema_pastillero_final.png`
+La versión presentada como definitiva debe coincidir con las conexiones utilizadas físicamente en el prototipo.
 
 ---
 
-## 16. Estado actual
+## 15. Configuración Final del Circuito
 
-La arquitectura electrónica general del prototipo está definida utilizando una ESP32 como unidad principal.
+La configuración documentada para el sistema es:
 
-Se ha definido la integración de:
-
-- Sensor o microinterruptor.
-- LED.
-- Buzzer pasivo.
 - ESP32.
-- Alimentación USB.
+- LED rojo en GPIO25.
+- Resistencia de LED de 300 Ω.
+- Pulsador en GPIO27.
+- Buzzer pasivo controlado desde GPIO26.
+- Resistencia de base de 1 kΩ.
+- Transistor BC547.
+- GND común.
+- Alimentación USB-C.
 
-Antes de cerrar la documentación final se debe verificar físicamente la numeración exacta de los GPIO utilizados en el prototipo.
-
-Una vez confirmados esos GPIO, deberán incorporarse tanto en este documento como en el archivo principal de firmware.
+Esta configuración corresponde a la utilizada para documentar el firmware y el montaje electrónico de la entrega.

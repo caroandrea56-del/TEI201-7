@@ -1,244 +1,188 @@
-# BOM – Lista de materiales
+# BOM – Lista de Materiales
 
-## 1. Objetivo
+## 1. Descripción
 
-Esta sección contiene la lista de materiales utilizados como referencia para la construcción del prototipo del pastillero inteligente.
+Esta sección documenta los componentes utilizados en el prototipo del pastillero inteligente.
 
-La BOM permite identificar los principales componentes electrónicos y mecánicos del sistema, sus características técnicas, cantidades, precios de referencia y proveedores.
-
-Los precios indicados corresponden a valores comerciales consultados en Chile para componentes equivalentes a los utilizados en el prototipo.
+La lista incluye los elementos electrónicos principales, su función y un costo comercial de referencia en Chile.
 
 ---
 
-## 2. Lista de materiales
+## 2. Lista de Materiales
 
-| Cantidad | Componente | Especificación | Modelo / Referencia | Proveedor | Precio unitario / pack | Precio total |
-|---:|---|---|---|---|---:|---:|
-| 1 | Microcontrolador | ESP32, WiFi/Bluetooth, 38 pines, 4 MB Flash | ESP32-DevkitC-V4 | Altronics | $9.246 | $9.246 |
-| 1 | Microinterruptor | Microswitch SPDT para detección mecánica | VS10N00-1C2 | Altronics | $2.916 | $2.916 |
-| 1 pack | LED rojo | Pack de 10 LED de 5 mm | LED-5MM-R | Altronics | $506 | $506 |
-| 1 pack | Resistencias | Pack de 10 resistencias de 220 Ω, 0,25 W, 1 % | 220 Ω / 0,25 W | Altronics | $413 | $413 |
-| 1 | Buzzer pasivo | Buzzer pasivo de 12 mm, rango 3–12 VDC | BZ12-5 | Altronics | $402 | $402 |
-| 1 | Protoboard | Breadboard de 830 puntos | MB-102 | Altronics | $2.930 | $2.930 |
-| 1 pack | Cables Dupont | 40 cables jumper macho-macho de 30 cm | Dupont 2,54 mm | Altronics | $3.251 | $3.251 |
-| 1 | Cable USB | USB-A a USB-C para datos y alimentación | USBC-DCH150 | Altronics | $1.847 | $1.847 |
-| 1 | Filamento PLA | PLA 1,75 mm, rollo de 1 kg | Filamento PLA 1,75 mm | Mercado Libre Chile | $12.290 | $12.290 |
-
-### Costo total de referencia
-
-**$33.801 CLP**
+| Cantidad | Componente | Especificación / Modelo | Función | Precio de referencia |
+|---:|---|---|---|---:|
+| 1 | ESP32 | ESP32-DevKitC-V4, 38 pines, USB-C | Procesamiento y conectividad WiFi | $9.246 |
+| 1 | Pulsador / sensor | Pulsador blanco no retentivo | Detectar interacción del usuario | $609 |
+| 1 pack | LED rojo | Pack 10 LED 5 mm | Alerta visual | $506 |
+| 1 pack | Resistencia LED | 300 Ω | Limitar corriente del LED | $500 |
+| 1 | Buzzer pasivo | BZ12-5, 12 mm, 3–12 VDC | Alerta sonora | $402 |
+| 1 pack | Resistencia buzzer | 1 kΩ | Limitar corriente hacia base del transistor | $500 |
+| 1 | Transistor | BC547 NPN, TO-92 | Accionamiento del buzzer | $290 |
+| 1 | Protoboard | MB-102, 830 puntos | Montaje del circuito | $2.930 |
+| 1 pack | Cables Dupont | 40 jumper macho-macho | Interconexión del circuito | $3.251 |
+| 1 | Cable USB-C | USB-A a USB-C, datos y alimentación | Programación y alimentación | $1.847 |
+| 1 | Encapsulado | Pieza impresa en 3D en PLA | Integración física del sistema | Fabricación propia |
 
 ---
 
-## 3. Detalle de componentes
+## 3. Costo de Referencia
 
-### ESP32
+Considerando los componentes comerciales de la tabla, sin asignar un valor independiente al encapsulado fabricado en el proyecto, el costo de referencia es:
 
-La placa utilizada como referencia corresponde a una ESP32-DevkitC-V4 de 38 pines.
+**$20.081 CLP**
+
+Este valor corresponde al costo de compra de las unidades o packs comerciales indicados y no necesariamente al costo exacto de material consumido por una sola unidad del prototipo.
+
+---
+
+## 4. ESP32
+
+La ESP32 constituye la unidad principal de procesamiento.
+
+Funciones:
+
+- Lectura del sensor.
+- Control del LED.
+- Control del buzzer.
+- Registro de eventos.
+- Procesamiento de información.
+- Conectividad WiFi.
+- Ejecución del servidor web.
+- Visualización mediante dashboard.
+
+La placa utilizada corresponde a una ESP32 de 38 pines con conexión USB-C.
+
+---
+
+## 5. Sensor / Pulsador
+
+El pulsador se utiliza como elemento de detección de interacción.
+
+Conexión:
+
+- GPIO27.
+- GND.
+
+La entrada se configura mediante `INPUT_PULLUP`.
+
+Estados:
+
+- Sin interacción: `HIGH`.
+- Pulsado: `LOW`.
+
+---
+
+## 6. LED Rojo
+
+El LED constituye la alerta visual del sistema.
+
+Conexión:
+
+- GPIO25.
+- Resistencia de 300 Ω en serie.
+
+La resistencia limita la corriente que circula por el LED y protege la salida de la ESP32.
+
+---
+
+## 7. Buzzer Pasivo
+
+El buzzer constituye la alerta sonora del sistema.
+
+Conexión de control:
+
+- GPIO26.
+- Resistencia de 1 kΩ.
+- Transistor BC547.
+
+Al tratarse de un buzzer pasivo, requiere una señal periódica para producir sonido.
+
+---
+
+## 8. Transistor BC547
+
+El transistor BC547 se utiliza como etapa de conmutación para controlar el buzzer desde la señal generada por la ESP32.
 
 Características principales:
 
-- Microcontrolador ESP32.
-- Procesador dual core de 32 bits.
-- Frecuencia máxima de 240 MHz.
-- 4 MB de memoria Flash.
-- Conectividad WiFi.
-- Bluetooth.
-- Alimentación mediante USB de 5 V.
-- Interfaces UART, SPI, I2C, ADC, DAC y GPIO.
+- Tipo: NPN.
+- Encapsulado: TO-92.
+- Corriente máxima de colector aproximada: 100 mA.
+- Tensión colector-emisor máxima aproximada: 45 V.
 
-La ESP32 fue seleccionada debido a que permite integrar adquisición de datos, procesamiento y conectividad IoT en una única placa.
+La resistencia de 1 kΩ limita la corriente aplicada a la base del transistor.
 
 ---
 
-### Microinterruptor
+## 9. Protoboard y Cableado
 
-Se utiliza un microswitch como elemento de detección mecánica.
+La protoboard permite desarrollar y modificar el circuito sin realizar soldaduras permanentes.
 
-Su función dentro del sistema es detectar la interacción del usuario con el pastillero.
+Los cables Dupont se utilizan para conectar:
 
-Como referencia comercial se utiliza el modelo VS10N00-1C2, que dispone de:
-
-- Contacto SPDT.
-- Terminal común.
-- Contacto normalmente abierto.
-- Contacto normalmente cerrado.
-- Activación mecánica.
-
-La señal del microinterruptor es procesada por la ESP32 como una entrada digital.
+- ESP32.
+- Pulsador.
+- LED.
+- Buzzer.
+- Transistor.
+- Alimentación y GND.
 
 ---
 
-### LED
+## 10. Alimentación
 
-El LED funciona como indicador visual del sistema.
+Durante las pruebas el sistema se alimenta mediante USB-C.
 
-Cuando existe una dosis pendiente, el dispositivo puede activar el LED para alertar al usuario.
-
-Se considera un LED rojo estándar de 5 mm.
-
----
-
-### Resistencia de 220 Ω
-
-La resistencia se conecta en serie con el LED para limitar la corriente eléctrica y proteger tanto el LED como la salida de la ESP32.
-
-Valor utilizado como referencia:
-
-**220 Ω, 0,25 W, tolerancia 1 %.**
-
----
-
-### Buzzer pasivo
-
-El buzzer permite generar la alerta sonora del dispositivo.
-
-El modelo de referencia BZ12-5 presenta:
-
-- Tipo pasivo.
-- Voltaje de operación entre 3 y 12 VDC.
-- Frecuencia de trabajo entre 2 y 5 kHz.
-- Diámetro aproximado de 12 mm.
-
-Debido a que es un buzzer pasivo, necesita una señal con frecuencia para producir sonido.
-
----
-
-### Protoboard
-
-La protoboard permite desarrollar y probar el circuito electrónico sin necesidad de soldar los componentes.
-
-El modelo de referencia corresponde a una breadboard MB-102 de 830 puntos.
-
----
-
-### Cables Dupont
-
-Los cables jumper permiten conectar físicamente la ESP32 con el sensor, LED, buzzer y protoboard.
-
-Para el cálculo de costos se considera un pack de 40 cables Dupont macho-macho de 30 cm.
-
----
-
-### Cable USB
-
-El cable USB permite:
+El cable permite:
 
 - Alimentar la ESP32.
-- Programar el microcontrolador.
-- Cargar el firmware desde Arduino IDE.
-- Utilizar el monitor serial durante las pruebas.
-
-Se considera como referencia un cable USB-A a USB-C compatible con transmisión de datos y alimentación.
+- Programar el dispositivo.
+- Utilizar comunicación serial durante el desarrollo.
 
 ---
 
-### Filamento PLA
+## 11. Encapsulado
 
-El encapsulado físico del dispositivo se fabrica mediante impresión 3D.
+El encapsulado se fabrica mediante impresión 3D.
 
-Como referencia de material se considera:
+El diseño considera:
 
-- PLA.
-- Diámetro de 1,75 mm.
-- Rollo de 1 kg.
-
-El material permite fabricar el encapsulado, tapas y elementos estructurales diseñados para el prototipo.
-
----
-
-## 4. Función de los componentes en el sistema
-
-### ESP32
-
-La ESP32 corresponde al núcleo del sistema.
-
-Sus principales funciones son:
-
-- Leer el estado del microinterruptor.
-- Procesar los eventos del dispositivo.
-- Activar el LED.
-- Activar el buzzer.
-- Gestionar la conectividad WiFi.
-- Registrar información.
-- Comunicarse con el sistema de visualización de datos.
-- Ejecutar la lógica del pastillero inteligente.
+- Ocho compartimientos.
+- Distribución 4 × 2.
+- Integración de los componentes electrónicos.
+- Acceso a la ESP32.
+- Acceso al cable USB-C.
+- Apertura para mantenimiento.
+- Reparabilidad y sustitución de componentes.
 
 ---
 
-### Microinterruptor
+## 12. Criterios de Selección
 
-Permite detectar una interacción física con el pastillero.
+Los componentes fueron seleccionados considerando:
 
-Esta información puede utilizarse para registrar una apertura o confirmar una interacción asociada a una toma de medicamento.
-
----
-
-### LED
-
-Entrega una señal visual para indicar que existe una alerta activa.
-
----
-
-### Buzzer
-
-Entrega una señal sonora para llamar la atención del usuario cuando corresponde una toma.
-
----
-
-### Estructura impresa en 3D
-
-El encapsulado tiene como finalidad:
-
-- Contener los componentes.
-- Proteger las conexiones.
-- Facilitar el transporte.
-- Integrar físicamente el sistema electrónico con el pastillero.
-- Permitir apertura y desmontaje para mantenimiento.
-- Facilitar reparación o reemplazo de componentes.
-
----
-
-## 5. Justificación de selección
-
-Los componentes se seleccionaron considerando principalmente:
-
-- Compatibilidad con la ESP32.
+- Compatibilidad con ESP32.
+- Disponibilidad.
 - Bajo costo.
-- Disponibilidad comercial.
-- Facilidad de programación.
+- Tamaño.
 - Facilidad de montaje.
-- Tamaño apropiado para el prototipo.
-- Posibilidad de reparación.
 - Facilidad de reemplazo.
-- Capacidad de conexión inalámbrica.
-- Simplicidad de integración.
+- Conectividad.
+- Capacidad de reparación.
 
-La ESP32 resulta especialmente adecuada debido a su conectividad WiFi integrada, lo que permite desarrollar el componente IoT del proyecto sin utilizar un módulo adicional.
-
-El microinterruptor constituye una solución simple y robusta para detectar una interacción física.
-
-El uso combinado de LED y buzzer permite entregar alertas mediante dos canales diferentes: visual y auditivo.
+La utilización de ESP32 permite integrar procesamiento y conectividad WiFi sin incorporar un módulo inalámbrico independiente.
 
 ---
 
-## 6. Costos
+## 13. Fuentes de Precios
 
-El costo comercial de referencia del conjunto de materiales es:
+Los precios de referencia corresponden a consultas comerciales realizadas en Chile.
 
-**$33.801 CLP**
-
-Este valor considera la compra de unidades o packs comerciales completos y no solamente la fracción de material efectivamente consumida durante la fabricación.
-
-Por esta razón, el costo real de material utilizado directamente en una sola unidad del prototipo puede ser inferior.
-
----
-
-## 7. Fuentes comerciales
-
-Los valores de referencia utilizados en esta BOM fueron consultados en proveedores disponibles en Chile:
+Principales proveedores utilizados como referencia:
 
 - Altronics Chile.
-- Mercado Libre Chile.
+- Pinout.cl.
+- Triacs Chile.
 
-Los precios corresponden a valores comerciales consultados durante el desarrollo de la entrega y pueden variar posteriormente según disponibilidad o proveedor.
+Los precios pueden variar posteriormente según disponibilidad comercial.
