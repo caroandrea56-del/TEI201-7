@@ -7,10 +7,10 @@ El archivo BOM debe incluir las siguientes columnas:
 | Columna | Descripción | Ejemplo |
 |---------|-------------|---------|
 | Cantidad | Número de unidades | 1 |
-| Componente | Nombre descriptivo | ESP8266 NodeMCU |
+| Componente | Nombre descriptivo | ESP32 |
 | Especificación | Detalles técnicos | WiFi integrado, 3.3 V |
 | Fabricante | Marca del componente | Espressif |
-| Código/SKU | Identificador único | ESP8266 |
+| Código/SKU | Identificador único | ESP32 |
 | Proveedor | Tienda/distribuidor | MercadoLibre / tienda electrónica |
 | Precio Unitario | Costo por unidad (CLP) | Por definir |
 | Precio Total | Cantidad × Precio | Por definir |
@@ -30,7 +30,7 @@ El archivo BOM debe incluir las siguientes columnas:
 
 | Cantidad | Componente | Especificación | Fabricante | Código/SKU | Proveedor | Precio Unitario | Precio Total | Datasheet |
 |---------:|------------|----------------|------------|------------|-----------|-----------------|--------------|-----------|
-| 1 | ESP32 | WiFi integrado, lógica 3.3 V | Espressif / compatible | ESP32 | $10.980 | Por definir | $10.980 | Por agregar |
+| 1 | ESP32 | WiFi integrado, lógica 3.3 V | Espressif / compatible | ESP32 | Por definir | $10.980 | $10.980 | Por agregar |
 | 1 | Sensor / microinterruptor | Sensor de contacto para detectar interacción | Por definir | Por definir | Por definir | Por definir | Por definir | Por agregar |
 | 1 | LED | LED indicador visual | Por definir | Por definir | Por definir | Por definir | Por definir | Por agregar |
 | 1 | Resistencia | Resistencia para protección del LED | Por definir | Por definir | Por definir | Por definir | Por definir | Por agregar |
@@ -40,7 +40,7 @@ El archivo BOM debe incluir las siguientes columnas:
 | 1 | Cable USB | Alimentación y programación de ESP8266 | Por definir | Por definir | Por definir | Por definir | Por definir | Por agregar |
 | 2 | Batería Li-ion 18650| 3,7 V; recargable; capacidad 6800 mAh| UltraFire | BCR18650 | Por definir | Por definir | Por definir | Por agregar |
 | 1 | Encapsulado impreso en 3D | Pastillero 100 × 80 × 30 mm | Diseño propio | — | Impresión 3D | Por definir | Por definir | — |
-| 1 | Portabaterías doble 18650| conexión USB| No identificado | Por definir | Por definir | Por definir | Por definir |
+| 1 | Portabaterías doble 18650| conexión USB| No identificado | Por definir | Por definir | Por definir | Por definir | POR agregar
 ---
 
 ## Presupuesto Total
